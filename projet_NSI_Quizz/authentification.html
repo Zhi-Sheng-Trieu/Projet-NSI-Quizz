@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<title>Se connecter</title>
+		<link rel="stylesheet" type="text/css" href="css/Quizz-css.css"/>
+		<link rel="icon" type="image/png" href="img/icon.png"/>
+		<script type="text/javascript" src="fonctionJS.js"></script>
+	</head>
+
+	<body>
+	
+		<div id="content">
+			<form id="formulaire" onsubmit="return false" method="POST" action="authentification.py">
+				<label>Login:</label>
+				<br>
+				<input id="login" type="text" name="login" placeholder="Mettez votre identifiant" onkeydown="border()" required>
+				<br><br>
+				<label>Mot de passe:</label>
+				<br>
+				<input id="mdp" type="password" name="mdp" placeholder="Mettez votre mot de passe" onkeydown="border2()" required>
+				<br>
+				<button onclick="verifier()">Se connecter</button>
+			</form>
+			<div id="redirection">
+				<p>Toujours pas inscrit ? <a href="inscription.html">Inscrivez-vous !</a></p>
+			</div>
+		</div>
+	</body>
+</html>
