@@ -1,0 +1,4 @@
+Options +ExecCGI
+AddHandler cgi-script .cgi .py
+AddDefaultCharset UTF-8
+SetEnv PYTHONIOENCODING UTF-8
