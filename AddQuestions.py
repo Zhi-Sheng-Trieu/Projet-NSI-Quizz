@@ -1,4 +1,4 @@
-#!/usr/bin/python3.8
+#! C:\python\python311\python.exe
 # -*- coding: utf8 -*-
 import cgi
 import cgitb
@@ -18,7 +18,7 @@ if log!=None: #On fait les test pour savoir si le joueur est connecté
             	<head>
             		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
             		<title>Proposer une question</title>
-            		<link rel="stylesheet" type="text/css" href="css/Quizz-css.css"/>
+            		<link rel="stylesheet" type="text/css" href="css/main.css"/>
             		<link rel="icon" type="image/png" href="img/icon.png"/>
             		<script type="text/javascript" src="fonctionJS.js"></script>
             		<style>
@@ -79,7 +79,7 @@ else: #Sinon on affiche une autre page lui demandant de se connecter ou de s'ins
                 	<head>
                 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
                 		<title>Quizz</title>
-                		<link rel="stylesheet" type="text/css" href="css/Quizz-css.css"/>
+                		<link rel="stylesheet" type="text/css" href="css/main.css"/>
                         <link rel="icon" type="image/png" href="img/icon.png"/>
                 		<script type="text/javascript" src="fonctionJS.js"></script>
                 	</head>

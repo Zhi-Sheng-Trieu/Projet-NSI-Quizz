@@ -1,7 +1,6 @@
 body{
 	text-align:center;
-	background: URL("../img/bg.jpg") center fixed;
-	background-repeat:no-repeat;
+	background: URL("../img/bg.jpg") no-repeat fixed center;
 	background-size:cover;
 	overflow-x:hidden;
 	font-family:"Comic Sans MS", cursive, sans-serif;
