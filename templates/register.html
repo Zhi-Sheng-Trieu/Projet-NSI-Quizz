@@ -6,12 +6,12 @@
 		<title>S'inscrire</title>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="icon" type="image/png" href="img/icon.png"/>
-		<script type="text/javascript" src="fonctionJS.js"></script>
+		<script type="text/javascript" src="src/js/fonctions.js"></script>
 	</head>
 
 	<body>
 		<div id="content">
-			<form id="formulaire" onsubmit="return false" method="POST" action="inscription.py">
+			<form id="formulaire" onsubmit="return false" method="POST" action="../inscription.py">
 				<label>Login:</label>
 				<br>
 				<input id="login" type="text" name="login" placeholder="Mettez un identifiant" onkeydown="border()" required>
@@ -23,7 +23,7 @@
 				<button onclick="verifier()">S'inscrire</button>
 			</form>
 			<div id="redirection">
-				<p>Déjà inscrit ? <a href="authentification.html">Connectez-vous !</a></p>
+				<p>Déjà inscrit ? <a href="login.html">Connectez-vous !</a></p>
 			</div>
 		</div>
 		

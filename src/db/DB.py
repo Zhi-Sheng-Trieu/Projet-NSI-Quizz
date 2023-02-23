@@ -1,6 +1,30 @@
-#! C:\python\python311\python.exe
+import mysql.connector
+
 
 class DB:
+    config = ""
+    connection = None
+
+    @staticmethod
+    def setConfig(config):
+        DB.config = config
+        DB.connection = None
+
+    @staticmethod
+    def connect():
+        if DB.connection is None:
+            try:
+                DB.connection = mysql.connector.connect(host='localhost',
+                                                        database='quizz',
+                                                        user='root',
+                                                        password='')
+                print("Connexion à la base de données réussie")
+            except mysql.connector.Error as err:
+                print("Erreur: {}".format(err))
+        else :
+            print("Connexion déjà établie")
+        return DB.connection
+
     @staticmethod
     def ouvrir(nom_fichier):
         monF = open(nom_fichier, "r", encoding="utf-8")
