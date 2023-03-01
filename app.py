@@ -9,33 +9,33 @@ app.secret_key = 'your secret key'
 
 
 @app.route('/')
-def hello_world():  # put application's code here
-    return render_template('index.html')
+def hello_world():  # put application's code her
+    return render_template('head.html', title='Accueil') + render_template('home.html')
 
 
 # on veut autoriser les methodes POST et GET
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     msg = ''
-    if request.method == 'POST' and 'login' in request.form and 'mdp' in request.form:
-        username = request.form['login']
+    if request.method == 'POST' and 'username' in request.form and 'mdp' in request.form:
+        username = request.form['username']
         password = request.form['mdp']
         cursor = mydb.cursor()
-        cursor.execute('SELECT * FROM users WHERE id = %s AND mdp = %s', (username, password))
+        cursor.execute('SELECT * FROM users WHERE username = %s AND mdp = %s', (username, password))
         account = cursor.fetchone()
         if account:
             session['loggedin'] = True
-            session['id'] = account[0]
-            session['username'] = account[1]
-            return 'Logged in successfully !'
+            session['username'] = account[0]
+            session['score'] = account[2]
+            return render_template('head.html', title='Login') + render_template('loged.html', user=session['username'])
         else:
-            return 'Incorrect username / password !'
-    return render_template('login.html')
+            msg = 'Mauvais identifiant ou mot de passe !'
+    return render_template('head.html', title='Login') + render_template('login.html', msg=msg)
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    return render_template('head.html', title='Register') + render_template('register.html')
 
 
 @app.route('/quizz')

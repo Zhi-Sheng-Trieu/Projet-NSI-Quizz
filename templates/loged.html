@@ -1,0 +1,13 @@
+<div id="content">
+    <p>Felicitation {{user}} ! Vous êtes connecte sur notre site ! Vous pouvez commencer a jouer ou ajouter de nouvelles
+        questions
+        au quizz !</p>
+    <form method="POST" action="/jeu">
+        <input type="hidden" name="login" value="{}"/>
+        <button>Commencer</button>
+    </form>
+    <form method="POST" action="/add-question">
+        <input type="hidden" name="login" value="{}">
+        <button>Proposer une nouvelle question</button>
+    </form>
+</div>

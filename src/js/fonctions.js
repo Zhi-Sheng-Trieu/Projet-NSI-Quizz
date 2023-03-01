@@ -1,11 +1,11 @@
 function verifier(){
-	var carLogin=document.getElementById("login").value.length;
+	var carLogin=document.getElementById("username").value.length;
 	var carMdp=document.getElementById("mdp").value.length;
 	
 	if(carLogin==0){
-		document.getElementById("login").style.borderColor = "red";
+		document.getElementById("username").style.borderColor = "red";
 	}else{
-		document.getElementById("login").style.borderColor = "";
+		document.getElementById("username").style.borderColor = "";
 	}
 	
 	if(carMdp<8){

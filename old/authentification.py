@@ -70,7 +70,7 @@ if submit == "return false":
     			<button onclick="verifier()">Se connecter</button>
     		</form>
 			<div id="redirection">
-				<p>Toujours pas inscrit ? <a href="inscription.html">Inscrivez-vous !</a></p>
+				<p>Toujours pas inscrit ? <a href="register.html">Inscrivez-vous !</a></p>
 			</div>
         </div>
 	</body>

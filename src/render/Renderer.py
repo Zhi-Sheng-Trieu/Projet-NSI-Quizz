@@ -10,13 +10,13 @@ class Renderer:
                 <title>{}</title>
                 <link rel="stylesheet" type="text/css" href="css/main.css"/>
                 <link rel="icon" type="image/png" href="img/icon.png"/>
-                <script type="text/javascript" src="fonctionJS.js"></script>
+                <script type="text/javascript" src="fonctions.js"></script>
             </head>
             <body>
                 <header>
                     <nav>
                         <ul>
-                            <li><a href="index.html">Accueil</a></li>
+                            <li><a href="head.html">Accueil</a></li>
                         </ul>
                     </nav>
                 </header>

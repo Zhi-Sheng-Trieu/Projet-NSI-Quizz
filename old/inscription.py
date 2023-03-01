@@ -47,7 +47,7 @@ if submit != "return false":  # Si le joueur peut être inscrit on met à jour l
                 		<title>Quizz</title>
                 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
                         <link rel="icon" type="image/png" href="img/icon.png"/>
-                		<script type="text/javascript" src="fonctionJS.js"></script>
+                		<script type="text/javascript" src="fonctions.js"></script>
                 	</head>
 
                 	<body>
@@ -76,7 +76,7 @@ else:  # Sinon on lui envoie le(s) message(s) d'erreur(s)
             <title>S'INSCRIRE</title>
             <link rel="stylesheet" type="text/css" href="css/main.css"/>
             <link rel="icon" type="image/png" href="img/icon.png"/>
-            <script type="text/javascript" src="fonctionJS.js"></script>
+            <script type="text/javascript" src="fonctions.js"></script>
         </head>
 
         <body>
@@ -95,7 +95,7 @@ else:  # Sinon on lui envoie le(s) message(s) d'erreur(s)
         		</form>
             </div>
 			<div id="redirection">
-				<p>Déjà inscrit ? <a href="authentification.html">Connectez-vous !</a></p>
+				<p>Déjà inscrit ? <a href="login.html">Connectez-vous !</a></p>
 			</div>
     	</body>
         </html>

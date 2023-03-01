@@ -20,7 +20,7 @@ if log!=None: #On fait les test pour savoir si le joueur est connecté
             		<title>Proposer une question</title>
             		<link rel="stylesheet" type="text/css" href="css/main.css"/>
             		<link rel="icon" type="image/png" href="img/icon.png"/>
-            		<script type="text/javascript" src="fonctionJS.js"></script>
+            		<script type="text/javascript" src="fonctions.js"></script>
             		<style>
             			#content{
             				top:1%;
@@ -81,17 +81,17 @@ else: #Sinon on affiche une autre page lui demandant de se connecter ou de s'ins
                 		<title>Quizz</title>
                 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
                         <link rel="icon" type="image/png" href="img/icon.png"/>
-                		<script type="text/javascript" src="fonctionJS.js"></script>
+                		<script type="text/javascript" src="fonctions.js"></script>
                 	</head>
 
                 	<body>
                         <div id="content">
                 			<p>Salut !</p>
                 			<p><em>Pour pouvoir <mark>ajouter des questions</mark> il faut être <strong>inscrit</strong> !</em></p>
-                			<form method="POST" action="inscription.html">
+                			<form method="POST" action="register.html">
                 				<button>S'inscrire</button>
                 			</form>
-                			<form method="POST" action="authentification.html">
+                			<form method="POST" action="login.html">
                 				<button>Se connecter</button>
                 			</form>
                 		</div>
