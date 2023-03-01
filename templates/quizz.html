@@ -1,0 +1,78 @@
+<audio src="audio/Dark_Mystery.mp3" type="audio/mpeg" loop=-1 autoplay></audio>
+<div id="quizz">
+    <p>Salut {} ! Ce quizz comporte 4 questions. Chaque bonne réponse te donnera 3 points, une mauvaise t'en fera perdre
+        1.</p>
+    <form id="formulaire" method="POST" action="score.py">
+        <input type="hidden" name="login" value="{}">'''.format(log,log),'''
+
+        <!--Question 1----------------------------------------->
+        <input type="hidden" name="Q1" value="{}">
+        <label for="Question1">{} :</label>
+        <br><br>
+        <input type="radio" id="Q1Rep1" name="Rep1" value="1"/>
+        <label for="Q1Rep1">{}</label>
+        <br><br>
+        <input type="radio" id="Q1Rep2" name="Rep1" value="2"/>
+        <label for="Q1Rep2">{}</label>
+        <br><br>
+        <input type="radio" id="Q1Rep3" name="Rep1" value="3"/>
+        <label for="Q1Rep3">{}</label>
+        <br><br>
+        <input type="radio" id="Q1Rep4" name="Rep1" value="4"/>
+        <label for="Q1Rep4">{}</label>
+        <br><br><br>'''.format(k1,quest1[0],quest1[1],quest1[2],quest1[3],quest1[4]),'''
+
+        <!--Question 2----------------------------------------->
+        <input type="hidden" name="Q2" value="{}">
+        <label for="Question2">{} :</label>
+        <br><br>
+        <input type="radio" id="Q2Rep1" name="Rep2" value="1"/>
+        <label for="Q2Rep1">{}</label>
+        <br><br>
+        <input type="radio" id="Q2Rep2" name="Rep2" value="2"/>
+        <label for="Q2Rep2">{}</label>
+        <br><br>
+        <input type="radio" id="Q2Rep3" name="Rep2" value="3"/>
+        <label for="Q2Rep3">{}</label>
+        <br><br>
+        <input type="radio" id="Q2Rep4" name="Rep2" value="4"/>
+        <label for="Q2Rep4">{}</label>
+        <br><br><br>'''.format(k2,quest2[0],quest2[1],quest2[2],quest2[3],quest2[4]),'''
+
+        <!--Question 3----------------------------------------->
+        <input type="hidden" name="Q3" value="{}">
+        <label for="Question3">{} :</label>
+        <br><br>
+        <input type="radio" id="Q3Rep1" name="Rep3" value="1"/>
+        <label for="Q3Rep1">{}</label>
+        <br><br>
+        <input type="radio" id="Q3Rep2" name="Rep3" value="2"/>
+        <label for="Q3Rep2">{}</label>
+        <br><br>
+        <input type="radio" id="Q3Rep3" name="Rep3" value="3"/>
+        <label for="Q3Rep3">{}</label>
+        <br><br>
+        <input type="radio" id="Q3Rep4" name="Rep3" value="4"/>
+        <label for="Q3Rep4">{}</label>
+        <br><br><br>'''.format(k3,quest3[0],quest3[1],quest3[2],quest3[3],quest3[4]),'''
+
+        <!--Question 4----------------------------------------->
+        <input type="hidden" name="Q4" value="{}">
+        <label for="Question4">{} :</label>
+        <br><br>
+        <input type="radio" id="Q4Rep1" name="Rep4" value="1"/>
+        <label for="Q4Rep1">{}</label>
+        <br><br>
+        <input type="radio" id="Q4Rep2" name="Rep4" value="2"/>
+        <label for="Q4Rep2">{}</label>
+        <br><br>
+        <input type="radio" id="Q4Rep3" name="Rep4" value="3"/>
+        <label for="Q4Rep3">{}</label>
+        <br><br>
+        <input type="radio" id="Q4Rep4" name="Rep4" value="4"/>
+        <label for="Q4Rep4">{}</label>
+        <br><br>'''.format(k4,quest4[0],quest4[1],quest4[2],quest4[3],quest4[4]),'''
+
+        <button>Valider</button>
+    </form>
+</div>

@@ -30,7 +30,7 @@ if log!=None: #On fait les test pour savoir si le joueur est connecté
         donneesPlayer[vals[0]]=vals[1],vals[2]  #On met à jour le dictionnaire
     monF.close() #On ferme le fichier
 
-    mesQ=open("questions.csv", "r", encoding="utf-8") #On ouvre le fichier contenant les questions
+    mesQ=open("../questions.csv", "r", encoding="utf-8") #On ouvre le fichier contenant les questions
     mesQ.readline()
     Q={}
     for lig in mesQ:    #On parcourt ligne par ligne le fichier

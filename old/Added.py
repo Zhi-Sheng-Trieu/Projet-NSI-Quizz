@@ -16,7 +16,7 @@ rep4 = donnees.getvalue("Rep4")
 cor = donnees.getvalue("correction")
 log = donnees.getvalue("login")
 
-monF = open("questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
+monF = open("../questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
 Q = monF.readlines()
 k = len(
     Q)  # On prend la longueur du fichier pour en faire la numéro de la nouvelle question puisque le première ligne est vide
@@ -25,7 +25,7 @@ monF.close()  # On ferme le fichier
 # On confirme que la question du joueur à été ajouté
 
 if log != None:  # On fait les test pour savoir si le joueur est connecté
-    monF = open("questions.csv", "a", encoding="utf-8")  # On met à jour le fichier
+    monF = open("../questions.csv", "a", encoding="utf-8")  # On met à jour le fichier
     monF.write("\n" + str(k) + ";" + quest + ";" + rep1 + ";" + rep2 + ";" + rep3 + ";" + rep4 + ";" + cor)
     monF.close()
     print('''<!DOCTYPE html>

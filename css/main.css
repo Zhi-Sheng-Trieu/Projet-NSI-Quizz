@@ -1,111 +1,163 @@
-body{
-	text-align:center;
-	background: URL("../img/bg.jpg") no-repeat fixed center;
-	background-size:cover;
-	overflow-x:hidden;
-	font-family:"Comic Sans MS", cursive, sans-serif;
-	font-size: 110%; /**/
+body {
+    text-align: center;
+    background: URL("../img/bg.jpg") no-repeat fixed center;
+    background-size: cover;
+    overflow-x: hidden;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 110%; /**/
+    padding: 0;
+    margin: 0;
 }
 
-#content{
-	width: 400px;
-	position:absolute;
-	left: 50%;
-	top:30%;
-	transform:translate(-50%,-50%);
-	background-color:rgb(207, 207, 207,0.8);
-	border-radius:10px;
-	padding-bottom:30px;
-	padding-top:15px;
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: grid;
+}
+header a{
+    text-decoration: none;
 }
 
-#quizz{
-	width: 500px;
-	position:absolute;
-	left: 50%;
-	transform:translate(-50%);
-	background-color:rgb(207, 207, 207,0.8);
-	border-radius:10px;
-	padding-bottom:30px;
-	padding-top:15px;
+header h1 {
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    grid-column: 1;
+}
+
+header h1 a {
+    color: red;
+}
+
+nav {
+    grid-column: 2;
+}
+
+nav ul {
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    font-size: 1.3em;
+    line-height: 50px;
+    padding: 5px 15px;
+    opacity: 0.7;
+    text-transform: uppercase;
+}
+
+nav li{
+    display: inline-block;
+    list-style: none;
+}
+
+nav li:hover {
+    background-color: red;
+}
+
+#content {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(207, 207, 207, 0.8);
+    border-radius: 10px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+}
+
+#quizz {
+    width: 500px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(207, 207, 207, 0.8);
+    border-radius: 10px;
+    padding-bottom: 30px;
+    padding-top: 15px;
 }
 
 .classement {
-	background-color : lightblue ;
-	margin-left:auto;
-	margin-right:auto;
-	width : 300px;
-	border-radius:10px;
+    background-color: lightblue;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    border-radius: 10px;
 }
 
-.classement  ol {
-	background-color : red;	
-	width:170px;
-	margin-left:auto;
-	margin-right:auto;
-	border-radius:10px;
+.classement ol {
+    background-color: red;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
 }
 
-form{
-	display:inline;
+form {
+    display: inline;
 }
 
-input{
-	text-align : center ; 
+input {
+    text-align: center;
 }
 
-mark{
-	background-color:red;
+mark {
+    background-color: red;
 }
 
-button{
-    cursor:pointer;
-	border-radius:10px;
-	padding:10px;
-	margin:20px;
-	background-color: gray;
-	color: #DDDDDD;
-	border:none;
-	font-size:15px;
-	font-family:"Comic Sans MS", cursive, sans-serif;
+button, .button {
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    background-color: gray;
+    color: #DDDDDD;
+    border: none;
+    font-size: 15px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-decoration: none;
 }
 
-button:hover{
-	background-color: #DDDDDD;
-	color: gray;
-	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
-	transform:scale(1.1,1.1);
+button:hover, .button:hover {
+    background-color: #DDDDDD;
+    color: gray;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
-#redirection p a{
-	color:blue;
-	text-decoration: none;
-	border-radius:5px;
+#redirection p a {
+    color: blue;
+    text-decoration: none;
+    border-radius: 5px;
 
 }
 
-#redirection p a:hover{
-	color:red;
-	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
+#redirection p a:hover {
+    color: red;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
 }
 
 
-footer{
-	background-color: rgb(207, 207, 207,0.4);
-	height:250px;
+footer {
+    background-color: rgb(207, 207, 207, 0.4);
+    height: 250px;
 }
 
-footer table{
+footer table {
     margin-top: 500px;
     width: 100%;
     border-top: 1px solid black;
 }
 
-footer table p{
-    border-bottom: 1px solid black ;
-    width:50%;
-    margin-left:auto;
-    margin-right:auto;
+footer table p {
+    border-bottom: 1px solid black;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer table td {
@@ -116,16 +168,16 @@ footer table td {
     text-align: center;
 }
 
-footer table td a{
+footer table td a {
     color: black;
-	text-decoration:none;
+    text-decoration: none;
 }
 
-footer table td a:hover, ion-icon:hover  {
+footer table td a:hover, ion-icon:hover {
     color: blue;
 }
 
 ion-icon {
-	color:white;
-	font-size: 30px;
+    color: white;
+    font-size: 30px;
 }
