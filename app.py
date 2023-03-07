@@ -180,7 +180,7 @@ def add_question():
 def profil():
     if request.method == 'POST':
         # on supprime la session
-        session['loggedin'] = False
+        session.pop('loggedin', None)
         session.pop('username', None)
         session.pop('score', None)
         return render_template('head.html', title='Profil') + "Vous êtes déconnecté !" + render_template('home.html')
@@ -190,6 +190,21 @@ def profil():
                                                                                   user=session['username'],
                                                                                   score=session['score'])
     return render_template('head.html', title='Profil') + "Vous n'êtes pas connecté !" + render_template('home.html')
+
+
+@app.route('/delete', methods=['GET', 'POST'])
+def delete():
+    if session.get('loggedin'):
+        cursor = mydb.cursor()
+        cursor.execute('DELETE FROM users WHERE username = %s', session['username'])
+        mydb.commit()
+        # on supprime la session
+        session.pop('loggedin', None)
+        session.pop('username', None)
+        session.pop('score', None)
+        return render_template('head.html', title='Delete') + "Votre compte a été supprimé !" + render_template(
+            'home.html')
+    return render_template('head.html', title='Delete') + "Vous n'êtes pas connecté !" + render_template('home.html')
 
 
 # on veut pouvoir acceder au dossier css, img, src et audio
