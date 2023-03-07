@@ -69,20 +69,21 @@ def quizz():
             <form id="formulaire" method="POST" action="/score">
         """.format(session['username'])
 
-        mesQ = open("old/questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
-        mesQ.readline()
-        Q = []
-        for lig in mesQ:  # On parcourt ligne par ligne le fichier
-            lig = lig.rstrip("\n")  # On retire le retour a la ligne
-            vals = lig.split(";")  # On retire les ";"
-            Q.append(vals)
-        mesQ.close()  # On ferme le fichier
-        # on ne garde que 4 questions aleatoires
+        cursor = mydb.cursor()
+        cursor.execute('SELECT * FROM questions')
+        Q = cursor.fetchall()
         import random
         Q = random.sample(Q, 4)
         i = 1
         # on affiche le dictonnaire Q
         for q in Q:
+            # on met les questions dans le formulaire et en session
+            session['Q' + str(i)] = q[1]
+            session['Q' + str(i) + 'rep1'] = q[2]
+            session['Q' + str(i) + 'rep2'] = q[3]
+            session['Q' + str(i) + 'rep3'] = q[4]
+            session['Q' + str(i) + 'rep4'] = q[5]
+            session['Q' + str(i) + 'repJuste'] = q[6]
             html += """
             <div class="question">
                 <input type="hidden" name="Q{0}" value="{10}">
@@ -115,21 +116,11 @@ def quizz():
 @app.route('/score', methods=['POST'])
 def score():
     if session['loggedin']:
-        if request.method == 'POST' :
-            if 'Rep1' in request.form and 'Rep2' in request.form and 'Rep3' in request.form and 'Rep4' in request.form :
+        if request.method == 'POST':
+            if 'Rep1' in request.form and 'Rep2' in request.form and 'Rep3' in request.form and 'Rep4' in request.form:
                 score = 0
-                mesQ = open("old/questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
-                mesQ.readline()
-                Q = {}
-                for lig in mesQ:  # On parcourt ligne par ligne le fichier
-                    lig = lig.rstrip("\n")  # On retire le retour a la ligne
-                    vals = lig.split(";")  # On retire les ";"
-                    Q[vals[0]] = vals
-                mesQ.close()  # On ferme le fichier
                 for i in range(1, 5):
-                    q = Q[request.form['Q' + str(i)]]
-                    print(request.form['Rep' + str(i)])
-                    if request.form['Rep' + str(i)] == q[6]:
+                    if int(request.form['Rep' + str(i)]) == session['Q' + str(i) + 'repJuste']:
                         score += 3
                     else:
                         score -= 1
@@ -137,7 +128,8 @@ def score():
                     score = 0
                 session['score'] += score
                 cursor = mydb.cursor()
-                cursor.execute('UPDATE users SET score = %s WHERE username = %s', (session['score'], session['username']))
+                cursor.execute('UPDATE users SET score = %s WHERE username = %s',
+                               (session['score'], session['username']))
                 mydb.commit()
                 cursor.execute('SELECT * FROM users ORDER BY score DESC')
                 classement = cursor.fetchall()
@@ -154,9 +146,9 @@ def score():
                 for i in range(1, 5):
                     html += """
                     <p>Question {} : {}</p>
-                    <p>Réponse juste : {}</p><br>""".format(i, Q[request.form['Q' + str(i)]][1],
-                                                            Q[request.form['Q' + str(i)]][
-                                                                int(Q[request.form['Q' + str(i)]][6]) + 1])
+                    <p>Réponse juste : {}</p><br>""".format(i, session['Q' + str(i)],
+                                                            session['Q' + str(i) + 'rep' + str(
+                                                                session['Q' + str(i) + 'repJuste'])])
                 html += """
                     <a class="button" href="/quizz">Nouvelle partie</a>
                     <a class="button" href="/add-question">Proposer une nouvelle question</a>
@@ -172,11 +164,22 @@ def add_question():
     if session['loggedin']:
         if request.method == 'POST':
             cursor = mydb.cursor()
-            cursor.execute('INSERT INTO questions (question, rep1, rep2, rep3, rep4, repJuste) VALUES (%s, %s, %s, %s, %s, %s)', (request.form['question'], request.form['rep1'], request.form['rep2'], request.form['rep3'], request.form['rep4'], int(request.form['correction'])))
+            cursor.execute(
+                'INSERT INTO questions (question, rep1, rep2, rep3, rep4, repJuste) VALUES (%s, %s, %s, %s, %s, %s)', (
+                    request.form['question'], request.form['rep1'], request.form['rep2'], request.form['rep3'],
+                    request.form['rep4'], int(request.form['correction'])))
             mydb.commit()
-            return render_template('head.html', title='Add Question') + render_template('added.html', user = session['username'])
+            return render_template('head.html', title='Add Question') + render_template('added.html',
+                                                                                        user=session['username'])
     return render_template('head.html', title='Add Question') + render_template('add-question.html')
 
+
+@app.route('/profil')
+def profil():
+    if session['loggedin']:
+        return render_template('head.html', title='Profil') + render_template('profil.html', user=session['username'],
+                                                                             score=session['score'])
+    return render_template('head.html', title='Profil') + render_template('home.html')
 
 # on veut pouvoir acceder au dossier css, img, src et audio
 @app.route('/css/<path:path>')
