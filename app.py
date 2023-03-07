@@ -69,7 +69,7 @@ def quizz():
             <form id="formulaire" method="POST" action="/score">
         """.format(session['username'])
 
-        mesQ = open("questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
+        mesQ = open("old/questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
         mesQ.readline()
         Q = []
         for lig in mesQ:  # On parcourt ligne par ligne le fichier
@@ -89,7 +89,7 @@ def quizz():
                 <h3>Question {0}</h3>
                 <p>{1}</p>
                 <div class="reponses">
-                    <input type="radio" name="Rep{0}" value="1" id="{2}">
+                    <input type="radio" name="Rep{0}" value="1" id="{2}" checked>
                     <label for="{2}">{3}</label><br>
                     <input type="radio" name="Rep{0}" value="2" id="{4}">
                     <label for="{4}">{5}</label><br>
@@ -118,7 +118,7 @@ def score():
         if request.method == 'POST' :
             if 'Rep1' in request.form and 'Rep2' in request.form and 'Rep3' in request.form and 'Rep4' in request.form :
                 score = 0
-                mesQ = open("questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
+                mesQ = open("old/questions.csv", "r", encoding="utf-8")  # On ouvre le fichier contenant les questions
                 mesQ.readline()
                 Q = {}
                 for lig in mesQ:  # On parcourt ligne par ligne le fichier
@@ -148,7 +148,7 @@ def score():
                         <p>Classement :</p>
                         <ol>""".format(score, session['score'])
                 for i in range(len(classement)):
-                    html += """<li>{}</li>""".format(classement[i][0])
+                    html += """<li>{} : {} pts</li>""".format(classement[i][0], classement[i][2])
                 html += """</ol>
                     </div><p>Correction :</p>"""
                 for i in range(1, 5):
@@ -158,13 +158,8 @@ def score():
                                                             Q[request.form['Q' + str(i)]][
                                                                 int(Q[request.form['Q' + str(i)]][6]) + 1])
                 html += """
-                    <form method="POST" action="/quizz">
-                        <button>Nouvelle partie</button>
-                    </form>
-                    <br>
-                    <form method="POST" action="/add-question">
-                        <button>Proposer une nouvelle question</button>
-                    </form>
+                    <a class="button" href="/quizz">Nouvelle partie</a>
+                    <a class="button" href="/add-question">Proposer une nouvelle question</a>
                 </div>"""
                 return render_template('head.html', title='Score') + html
             else:
@@ -174,6 +169,12 @@ def score():
 
 @app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
+    if session['loggedin']:
+        if request.method == 'POST':
+            cursor = mydb.cursor()
+            cursor.execute('INSERT INTO questions (question, rep1, rep2, rep3, rep4, repJuste) VALUES (%s, %s, %s, %s, %s, %s)', (request.form['question'], request.form['rep1'], request.form['rep2'], request.form['rep3'], request.form['rep4'], int(request.form['correction'])))
+            mydb.commit()
+            return render_template('head.html', title='Add Question') + render_template('added.html', user = session['username'])
     return render_template('head.html', title='Add Question') + render_template('add-question.html')
 
 

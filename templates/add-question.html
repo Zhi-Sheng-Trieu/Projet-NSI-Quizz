@@ -1,0 +1,36 @@
+<div id="content">
+    <p style="font-size:20px;">PROPOSEZ VOTRE QUESTION/RÉPONSES</p>
+    <form id="formulaire" method="POST" action="/add-question">
+        <input type="hidden" name="login" value="{}"/>
+        <label for="question">Question :</label>
+        <br>
+        <input autocomplete="off" type="text" name="question" id="question" placeholder="Mettez votre question" required/>
+        <br><br>
+        <label>Réponse 1 :</label>
+        <br>
+        <input autocomplete="off" type="text" name="rep1" id="rep1" placeholder="Mettez votre réponse 1" required/>
+        <br><br>
+        <label>Réponse 2 :</label>
+        <br>
+        <input autocomplete="off" type="text" name="rep2" id="rep2" placeholder="Mettez votre réponse 2" required/>
+        <br><br>
+        <label>Réponse 3 :</label>
+        <br>
+        <input autocomplete="off" type="text" name="rep3" id="rep3" placeholder="Mettez votre réponse 3" required/>
+        <br><br>
+        <label>Réponse 4 :</label>
+        <br>
+        <input autocomplete="off" type="text" name="rep4" id="rep4" placeholder="Mettez votre réponse 4" required/>
+        <br><br>
+        <label for="choixTaille">Choisissez la bonne réponse :</label>
+        <br>
+        <select name="correction" id="correction">
+            <option value=1>Réponse 1</option>
+            <option value=2>Réponse 2</option>
+            <option value=3>Réponse 3</option>
+            <option value=4>Réponse 4</option>
+        </select>
+        <br>
+        <button>Valider</button>
+    </form>
+</div>

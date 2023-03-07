@@ -59,20 +59,8 @@ nav li:hover {
     background-color: red;
 }
 
-#content {
+#content, #log {
     width: 400px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(207, 207, 207, 0.8);
-    border-radius: 10px;
-    padding-bottom: 30px;
-    padding-top: 15px;
-}
-
-#quizz {
-    width: 500px;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -80,6 +68,21 @@ nav li:hover {
     border-radius: 10px;
     padding-bottom: 30px;
     padding-top: 15px;
+}
+
+#log {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#quizz {
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: rgb(207, 207, 207, 0.8);
+    border-radius: 10px;
+    padding: 15px 30px 30px;
 }
 
 .classement {
