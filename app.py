@@ -9,7 +9,9 @@ app.secret_key = 'your secret key'
 
 
 @app.route('/', methods=['GET', 'POST'])
-def hello_world():  # put application's code her
+def hello_world():  # put application's code here
+    if session.get('loggedin'):
+        return render_template('head.html', title='Accueil') + render_template('loged.html', user=session['username'])
     return render_template('head.html', title='Accueil') + render_template('home.html')
 
 
@@ -61,7 +63,7 @@ def register():
 @app.route('/quizz', methods=['GET', 'POST'])
 def quizz():
     html = render_template('head.html', title='Quizz')
-    if session['loggedin']:
+    if session.get('loggedin'):
         html += """
         <audio src="audio/Dark_Mystery.mp3" type="audio/mpeg" loop=-1 autoplay></audio>
         <div id="quizz">
@@ -115,7 +117,7 @@ def quizz():
 
 @app.route('/score', methods=['POST'])
 def score():
-    if session['loggedin']:
+    if session.get('loggedin'):
         if request.method == 'POST':
             if 'Rep1' in request.form and 'Rep2' in request.form and 'Rep3' in request.form and 'Rep4' in request.form:
                 score = 0
@@ -161,7 +163,7 @@ def score():
 
 @app.route('/add-question', methods=['GET', 'POST'])
 def add_question():
-    if session['loggedin']:
+    if session.get('loggedin'):
         if request.method == 'POST':
             cursor = mydb.cursor()
             cursor.execute(
@@ -174,12 +176,21 @@ def add_question():
     return render_template('head.html', title='Add Question') + render_template('add-question.html')
 
 
-@app.route('/profil')
+@app.route('/profil', methods=['GET', 'POST'])
 def profil():
-    if session['loggedin']:
-        return render_template('head.html', title='Profil') + render_template('profil.html', user=session['username'],
-                                                                             score=session['score'])
-    return render_template('head.html', title='Profil') + render_template('home.html')
+    if request.method == 'POST':
+        # on supprime la session
+        session['loggedin'] = False
+        session.pop('username', None)
+        session.pop('score', None)
+        return render_template('head.html', title='Profil') + "Vous êtes déconnecté !" + render_template('home.html')
+    else:
+        if session.get('loggedin'):
+            return render_template('head.html', title='Profil') + render_template('profil.html',
+                                                                                  user=session['username'],
+                                                                                  score=session['score'])
+    return render_template('head.html', title='Profil') + "Vous n'êtes pas connecté !" + render_template('home.html')
+
 
 # on veut pouvoir acceder au dossier css, img, src et audio
 @app.route('/css/<path:path>')
