@@ -227,3 +227,5 @@ def send_src(path):
 def send_audio(path):
     return send_from_directory('audio', path)
 
+if __name__ == '__main__':
+    app.run()
