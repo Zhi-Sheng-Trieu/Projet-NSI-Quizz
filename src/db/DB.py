@@ -3,33 +3,24 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-USER = os.getenv('USER')
-if USER is None:
-    USER =  'root'
-PASSWORD = os.getenv('PASSWORD')
-if PASSWORD is None:
-    PASSWORD = ''
-HOST = os.getenv('HOST')
-if HOST is None:
-    HOST = 'localhost'
-DATABASE = os.getenv('DATABASE')
-if DATABASE is None:
-    DATABASE = 'quizz'
+USER = os.getenv('USER', 'root')
+PASSWORD = os.getenv('PASSWORD', '')
+HOST = os.getenv('HOST', 'localhost')
+DATABASE = os.getenv('DATABASE', 'quizz')
 
 class DB:
     connection = None
 
     @staticmethod
     def connect():
-        
-        if DB.connection is None:
+        if DB.connection :
+            print("Connexion déjà établie")
+        else:
             try:
-                DB.connection = mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE)
+                DB.connection = DB.connection or mysql.connector.connect(host=HOST, user=USER, password=PASSWORD, database=DATABASE)
                 print("Connexion à la base de données réussie")
             except mysql.connector.Error as err:
                 print("Erreur: {}".format(err))
-        else :
-            print("Connexion déjà établie")
         return DB.connection
 
     @staticmethod
