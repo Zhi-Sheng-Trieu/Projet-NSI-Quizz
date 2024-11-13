@@ -2,20 +2,18 @@ from flask import Flask, render_template, send_from_directory, request, session
 
 from src.db.DB import DB
 
-DB.setConfig("config.ini")
 mydb = DB.connect()
 app = Flask(__name__)
 app.secret_key = 'your secret key'
 
 
-@app.route('/', methods=['GET', 'POST'])
-def hello_world():  # put application's code here
+@app.route('/')
+def home():  
     if session.get('loggedin'):
         return render_template('head.html', title='Accueil') + render_template('loged.html', user=session['username'])
     return render_template('head.html', title='Accueil') + render_template('home.html')
 
 
-# on veut autoriser les methodes POST et GET
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     msg = ''
@@ -207,7 +205,7 @@ def delete():
     return render_template('head.html', title='Delete') + "Vous n'êtes pas connecté !" + render_template('home.html')
 
 
-# on veut pouvoir acceder au dossier css, img, src et audio
+# acceder au dossier css, img, src et audio
 @app.route('/css/<path:path>')
 def send_css(path):
     return send_from_directory('css', path)
@@ -227,5 +225,6 @@ def send_src(path):
 def send_audio(path):
     return send_from_directory('audio', path)
 
+# on lance l'application
 if __name__ == '__main__':
     app.run()
