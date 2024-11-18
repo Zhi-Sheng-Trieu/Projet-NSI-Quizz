@@ -5,7 +5,6 @@ mydb = DB.connect()
 app = Flask(__name__)
 app.secret_key = 'your secret key'
 
-
 @app.route('/')
 def home():  
     if session.get('loggedin'):
@@ -44,7 +43,7 @@ def register():
             username = request.form['username']
             password = request.form['mdp']
             cursor = mydb.cursor()
-            cursor.execute('SELECT * FROM users WHERE username = %s', username)
+            cursor.execute('SELECT * FROM users WHERE username = %s', (username,))
             account = cursor.fetchone()
             if account:
                 msg = 'Compte déjà existant !'
@@ -193,7 +192,8 @@ def profil():
 def delete():
     if session.get('loggedin'):
         cursor = mydb.cursor()
-        cursor.execute('DELETE FROM users WHERE username = %s', session['username'])
+        username = session['username']
+        cursor.execute('DELETE FROM users WHERE username = %s', (username,))
         mydb.commit()
         # on supprime la session
         session.pop('loggedin', None)
