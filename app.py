@@ -215,7 +215,7 @@ def send_img(path):
     return send_from_directory('img', path)
 
 
-@app.route('/js/<path:path>')
+@app.route('/src/js/<path:path>')
 def send_src(path):
     return send_from_directory('js', path)
 
