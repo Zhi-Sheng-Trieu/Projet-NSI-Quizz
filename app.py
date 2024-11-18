@@ -205,22 +205,22 @@ def delete():
 
 
 # acceder au dossier css, img, src et audio
-@app.route('src/css/<path:path>')
+@app.route('/css/<path:path>')
 def send_css(path):
     return send_from_directory('css', path)
 
 
-@app.route('src/img/<path:path>')
+@app.route('/img/<path:path>')
 def send_img(path):
     return send_from_directory('img', path)
 
 
-@app.route('src/js/<path:path>')
+@app.route('/js/<path:path>')
 def send_src(path):
     return send_from_directory('js', path)
 
 
-@app.route('src/audio/<path:path>')
+@app.route('/audio/<path:path>')
 def send_audio(path):
     return send_from_directory('audio', path)
 
