@@ -26,8 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `questions`
 --
-
-CREATE TABLE `questions` (
+DROP TABLE IF EXISTS `questions`;
+CREATE TABLE IF NOT EXISTS `questions` (
   `id` int NOT NULL,
   `question` varchar(256) NOT NULL,
   `rep1` varchar(256) NOT NULL,
@@ -69,8 +69,8 @@ INSERT INTO `questions` (`id`, `question`, `rep1`, `rep2`, `rep3`, `rep4`, `repJ
 --
 -- Structure de la table `users`
 --
-
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `mdp` varchar(256) NOT NULL,
   `score` int NOT NULL
