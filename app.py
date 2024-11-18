@@ -1,5 +1,5 @@
 from flask import Flask, render_template, send_from_directory, request, session
-from db.DB import DB
+from src.db.DB import DB
 
 mydb = DB.connect()
 app = Flask(__name__)
@@ -205,22 +205,22 @@ def delete():
 
 
 # acceder au dossier css, img, src et audio
-@app.route('/css/<path:path>')
+@app.route('src/css/<path:path>')
 def send_css(path):
     return send_from_directory('css', path)
 
 
-@app.route('/img/<path:path>')
+@app.route('src/img/<path:path>')
 def send_img(path):
     return send_from_directory('img', path)
 
 
-@app.route('/js/<path:path>')
+@app.route('src/js/<path:path>')
 def send_src(path):
     return send_from_directory('js', path)
 
 
-@app.route('/audio/<path:path>')
+@app.route('src/audio/<path:path>')
 def send_audio(path):
     return send_from_directory('audio', path)
 
