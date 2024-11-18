@@ -10,7 +10,7 @@ class Renderer:
                 <title>{}</title>
                 <link rel="stylesheet" type="text/css" href="css/main.css"/>
                 <link rel="icon" type="image/png" href="img/icon.png"/>
-                <script type="text/javascript" src="fonctions.js"></script>
+                <script type="text/javascript" src="js/fonctions.js"></script>
             </head>
             <body>
                 <header>

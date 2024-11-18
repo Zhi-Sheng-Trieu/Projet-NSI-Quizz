@@ -1,6 +1,5 @@
 from flask import Flask, render_template, send_from_directory, request, session
-
-from src.db.DB import DB
+from db.DB import DB
 
 mydb = DB.connect()
 app = Flask(__name__)
@@ -216,9 +215,9 @@ def send_img(path):
     return send_from_directory('img', path)
 
 
-@app.route('/src/js/<path:path>')
+@app.route('/js/<path:path>')
 def send_src(path):
-    return send_from_directory('src/js', path)
+    return send_from_directory('js', path)
 
 
 @app.route('/audio/<path:path>')
